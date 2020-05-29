@@ -1,0 +1,6 @@
+from zipfile import ZipFile
+file_path='zipfile.zip'
+
+with ZipFile(file_path,'r') as zip:
+    zip.printdir()
+    zip.extract()
