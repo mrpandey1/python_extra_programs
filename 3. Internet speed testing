@@ -1,0 +1,9 @@
+from speedtest import Speedtest
+st=Speedtest()
+
+print(f'Download speed : {st.download()/11048576:.2f}mbps')
+print(f'Upload speed : {st.upload()/1048576:.2f}mbps',)
+st.get_servers([])
+
+print(f'Ping : {st.results.ping}ms')
+
