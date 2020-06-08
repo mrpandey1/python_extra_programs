@@ -1,0 +1,59 @@
+
+'''
+You are to find all pairs of integers such that their sum is equal to the given integer number N and the second number results from the first one by striking out one of its digits. The first integer always has at least two digits and starts with a non-zero digit. The second integer always has one digit less than the first integer and may start with a zero digit.
+Input
+The input consists of a single integer N (10 ≤ N ≤ 109).
+Output
+Write the total number of different pairs of integers that satisfy the problem statement. Then write all those pairs. Write one pair on a line in ascending order of the first integer in the pair. Each pair must be written in the following format:
+X + Y = N
+Here X, Y, and N must be replaced with the corresponding integer numbers. There should be exactly one space on both sides of '+' and '=' characters.
+'''
+
+
+import timeit
+def check(s1,s2):
+    s1=str(s1)
+    if s2<=9 and len(s1)>2:
+        s2=str(s2)
+        s2=f'0{s2}'
+    s2=str(s2)
+    s2,s1=s1,s2
+    if len(s2)-len(s1)==1:
+        m = len(s1) 
+        n = len(s2) 
+        j = 0 
+        i = 0   
+        while j<m and i<n: 
+            if s1[j] == s2[i]:     
+                j+=1
+            i+=1
+        return j==m  
+    return False
+def ans(a):
+    temp1=int(a//2)
+    temp2=1
+    answer=0
+    print(temp1)
+    while True:
+        if temp1+temp2>=a:
+            break
+        temp1+=1
+        temp2+=1
+    print(temp1)
+    if temp1+temp2!=a:
+        temp1-=1
+    while temp2>0 and temp1<a:
+        if check(temp1,temp2):
+            if temp1+temp2==a:
+                print(f'{temp1}+{temp2}={a}')
+                answer+=1
+        temp1+=1
+        temp2-=1
+    print(answer)
+starttime = timeit.default_timer()
+print("The start time is :",starttime)
+ans(302)
+print("The time difference is :", timeit.default_timer() - starttime)
+'''
+ 0.05320988999999998
+'''
