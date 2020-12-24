@@ -1,0 +1,9 @@
+def makeList(tree):
+    paths = []
+    if not (tree.left or tree.right):
+        return [[tree.val]]
+    if tree.left:
+        paths.extend([[tree.val] + child for child in makeList(tree.left)])
+    if tree.right:
+        paths.extend([[tree.val] + child for child in makeList(tree.right)])
+    return paths
